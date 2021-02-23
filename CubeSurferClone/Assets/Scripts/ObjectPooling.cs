@@ -29,10 +29,11 @@ public class ObjectPooling : MonoBehaviour
 
     private void AddCubes(int amount)
     {
+        var health = FindObjectOfType<CubeHealth>();
         for (int i = 0; i < amount; i++)
         {
             GameObject cube = Instantiate(cubePrefab,
-                                          new Vector3(transform.position.x, i + 0.5f, transform.position.z),
+                                          new Vector3(transform.position.x, transform.position.y + health.currentCubeAmount *  0.5f, transform.position.z),
                                           Quaternion.identity);
             cube.gameObject.SetActive(false);
             cubes.Enqueue(cube);

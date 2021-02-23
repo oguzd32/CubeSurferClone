@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class CubeHealth : MonoBehaviour
 {
-    [SerializeField] private GameObject cubePrefab;
-    [SerializeField] private Transform boy;
-    [SerializeField] private ObjectPooling pool;
-    [SerializeField] int maxCubeCount = 30;
-    [SerializeField] int cubeAmountAtStart = 3;
-    [SerializeField] float offSetY;
-
-    public int currentCubeAmount { get; set; } = 0;
-
+    public int currentCubeAmount { get; set; } = 1;
 
     void Start()
     {
+        /*
         for (int i = 0; i < cubeAmountAtStart; i++)
         {
             var cube = ObjectPooling.Instance.Get();
@@ -23,5 +16,6 @@ public class CubeHealth : MonoBehaviour
             cube.gameObject.SetActive(true);
             currentCubeAmount++;
         }
+        */
     }
 }
