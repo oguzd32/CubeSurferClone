@@ -7,22 +7,25 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float forwardSpeed = 5f;
     [SerializeField] private float moveDirection = 0f;
     [SerializeField] private float screenWidthtInUnits = 16f;
-    [SerializeField] private float minZ = 1f;
-    [SerializeField] private float maxZ = 5f;
+    [SerializeField] private float minX = -1.5f;
+    [SerializeField] private float maxX = 1.5f;
+
+    public GameObject parent;
 
     private Vector3 direction;
-
+    private CubeHealth health;
     private CharacterController characterController;
 
     void Start()
     {
+        health = GetComponent<CubeHealth>();
         characterController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        direction.x = -forwardSpeed;
-        direction.z = Mathf.Clamp(GetZPos(), minZ, maxZ);
+        direction.z = forwardSpeed;
+        direction.x = Mathf.Clamp(GetXPos(), minX, maxX);
     }
 
     private void FixedUpdate()
@@ -30,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         characterController.Move(direction * Time.fixedDeltaTime);
     }
 
-    private float GetZPos()
+    private float GetXPos()
     {
         return Input.mousePosition.x / Screen.width * screenWidthtInUnits;
     }
