@@ -8,6 +8,7 @@ TagManager:
   - Cube
   - CubeParent
   - Boy
+  - DeadCube
   layers:
   - Default
   - TransparentFX

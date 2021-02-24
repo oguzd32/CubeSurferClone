@@ -9,6 +9,7 @@ public class CoinPickUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // add score in UI
+        FindObjectOfType<GameSession>().AddToScore(pointPerCoin);
 
         Destroy(gameObject);
     }

@@ -13,9 +13,7 @@ public class ObstacleController : MonoBehaviour
             int objectIndex = FindObjectOfType<CubeHealth>().currentCubeAmount;
             GameObject destroyObject = GameObject.FindGameObjectWithTag("CubeParent").transform.GetChild(objectIndex - 1).gameObject;
             FindObjectOfType<PlayerMovement>().RemoveCube(destroyObject);
-            GameObject.FindGameObjectWithTag("Boy").transform.position -= new Vector3(0, 0.5f, 0);
-
-            //other.gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().RemoveCube(other.gameObject); 
+            GameObject.FindGameObjectWithTag("Boy").transform.position -= new Vector3(0, 0.5f, 0); 
         }
     }
 }
