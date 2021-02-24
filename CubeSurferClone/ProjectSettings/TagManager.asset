@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Grow
+  - Cube
+  - CubeParent
+  - Boy
   layers:
   - Default
   - TransparentFX

@@ -5,17 +5,4 @@ using UnityEngine;
 public class CubeHealth : MonoBehaviour
 {
     public int currentCubeAmount { get; set; } = 1;
-
-    void Start()
-    {
-        /*
-        for (int i = 0; i < cubeAmountAtStart; i++)
-        {
-            var cube = ObjectPooling.Instance.Get();
-            cube.transform.parent = gameObject.transform;
-            cube.gameObject.SetActive(true);
-            currentCubeAmount++;
-        }
-        */
-    }
 }

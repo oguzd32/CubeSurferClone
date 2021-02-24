@@ -5,12 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float forwardSpeed = 5f;
-    [SerializeField] private float moveDirection = 0f;
     [SerializeField] private float screenWidthtInUnits = 16f;
     [SerializeField] private float minX = -1.5f;
     [SerializeField] private float maxX = 1.5f;
-
-    public GameObject parent;
 
     private Vector3 direction;
     private CubeHealth health;
@@ -36,5 +33,11 @@ public class PlayerMovement : MonoBehaviour
     private float GetXPos()
     {
         return Input.mousePosition.x / Screen.width * screenWidthtInUnits;
+    }
+
+    public void RemoveCube(GameObject cube)
+    {
+        health.currentCubeAmount--;
+        FindObjectOfType<ObjectPooling>().ReturnToPool(cube);
     }
 }

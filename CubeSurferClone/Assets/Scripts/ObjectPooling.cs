@@ -6,7 +6,6 @@ using UnityEngine;
 public class ObjectPooling : MonoBehaviour
 {
     [SerializeField] private GameObject cubePrefab;
-    [SerializeField] private float height = 1f;
 
     private Queue<GameObject> cubes = new Queue<GameObject>();
 
@@ -35,6 +34,7 @@ public class ObjectPooling : MonoBehaviour
             GameObject cube = Instantiate(cubePrefab,
                                           new Vector3(transform.position.x, transform.position.y + health.currentCubeAmount *  0.5f, transform.position.z),
                                           Quaternion.identity);
+
             cube.gameObject.SetActive(false);
             cubes.Enqueue(cube);
         }
