@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ScoreBox : MonoBehaviour
 {
+    [SerializeField] private int multipleScore;
+
     private int i = 0;
     private bool once = false;
 
@@ -15,10 +17,9 @@ public class ScoreBox : MonoBehaviour
             {
                 once = true;
                 PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
-
-                int objectIndex = FindObjectOfType<CubeHealth>().currentCubeAmount;
                 GameObject destroyObject = GameObject.FindGameObjectWithTag("CubeParent").transform.GetChild(i).gameObject;
                 playerMovement.RemoveCube(destroyObject);
+                FindObjectOfType<GameSession>().AddToScore(multipleScore);
                 once = false;
                 i++;
             }

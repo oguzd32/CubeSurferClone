@@ -13,7 +13,6 @@ public class CubeHealth : MonoBehaviour
         if (currentCubeAmount <= 1)
         {
             SceneManager.LoadScene(0);
-            return;
         }
     }
 }

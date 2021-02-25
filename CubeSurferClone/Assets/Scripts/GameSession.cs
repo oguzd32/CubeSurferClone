@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] int score = 0;
+    public int score { get; set; }
     [SerializeField] Text scoreText;
 
     void Start()
