@@ -8,6 +8,8 @@ public class CollectCubes : MonoBehaviour
     [SerializeField] private GameObject parentObject;
     [SerializeField] private float offSetY = 0.5f;
 
+    private bool once = false;
+
     CubeHealth health;
 
     private void Start()
@@ -19,12 +21,20 @@ public class CollectCubes : MonoBehaviour
     {
         if (other.gameObject.tag == "Grow")
         {
-            GameObject cube = ObjectPooling.Instance.Get();
-            cube.transform.parent = parentObject.transform;
-            cube.gameObject.SetActive(true);
-            health.currentCubeAmount++;
-            Destroy(other.gameObject);
-            playerObject.transform.position = new Vector3(transform.position.x, 1f + transform.position.y + offSetY * health.currentCubeAmount, transform.position.z);
+            if(once == false)
+            {
+                once = true;
+
+                GameObject cube = ObjectPooling.Instance.Get();
+                cube.transform.parent = parentObject.transform;
+                cube.gameObject.SetActive(true);
+                health.currentCubeAmount++;
+                Destroy(other.gameObject);
+                once = false;
+                playerObject.transform.position = new Vector3(transform.position.x,
+                                                              1f + transform.position.y + offSetY * health.currentCubeAmount,
+                                                              transform.position.z);
+            }
         }
     }
 }

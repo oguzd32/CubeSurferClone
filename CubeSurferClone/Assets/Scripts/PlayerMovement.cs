@@ -10,13 +10,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxX = 1.5f;
 
     private Vector3 direction;
+
+    // cached components
+    private ObjectPooling pool;
     private CubeHealth health;
-    private CharacterController characterController;
+    public CharacterController characterController;
 
     void Start()
     {
         health = GetComponent<CubeHealth>();
         characterController = GetComponent<CharacterController>();
+        pool = GetComponent<ObjectPooling>();
     }
 
     void Update()
@@ -37,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void RemoveCube(GameObject cube)
     {
-        health.currentCubeAmount--;
-        FindObjectOfType<ObjectPooling>().ReturnToPool(cube);
+        health.DealDamage();
+        pool.ReturnToPool(cube);
     }
 }

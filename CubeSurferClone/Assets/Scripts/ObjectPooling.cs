@@ -9,11 +9,18 @@ public class ObjectPooling : MonoBehaviour
 
     private Queue<GameObject> cubes = new Queue<GameObject>();
 
-    public static ObjectPooling  Instance { get; private set; }
+    private CubeHealth health;
+
+    public static ObjectPooling Instance { get; private set; }
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        health = GetComponent<CubeHealth>();
     }
 
     public GameObject Get()
@@ -28,11 +35,10 @@ public class ObjectPooling : MonoBehaviour
 
     private void AddCubes(int amount)
     {
-        var health = FindObjectOfType<CubeHealth>();
         for (int i = 0; i < amount; i++)
         {
             GameObject cube = Instantiate(cubePrefab,
-                                          new Vector3(transform.position.x, transform.position.y + health.currentCubeAmount *  0.5f, transform.position.z),
+                                          new Vector3(transform.position.x, transform.position.y + health.currentCubeAmount * 0.5f, transform.position.z),
                                           Quaternion.identity);
 
             cube.gameObject.SetActive(false);
@@ -46,4 +52,3 @@ public class ObjectPooling : MonoBehaviour
         cubes.Enqueue(cube);
     }
 }
-                                     
